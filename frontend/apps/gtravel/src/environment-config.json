@@ -1,0 +1,6 @@
+{
+  "baseHref": "",
+  "apiUrl": "",
+  "tokenExpireInSeconds": 1800,
+  "logoutCallbackUrl" : "http://localhost:4200/auth/login"
+}

@@ -1,8 +1,10 @@
 // This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
+// `ng build` replaces `environmentDevelopment.ts` with `environmentDevelopment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
+import { MergedEnvironment } from '../../../../libs/core/src/lib/environment-manager/entity/environment';
+
+export const environment : MergedEnvironment = {
   production: false,
 };
 

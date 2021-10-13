@@ -13,8 +13,13 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "strictPropertyInitialization": false,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@frontend/core": ["libs/core/src/index.ts"],
+      "@frontend/shared/auth": ["libs/shared/auth/src/index.ts"],
+      "@frontend/shared/components": ["libs/shared/components/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

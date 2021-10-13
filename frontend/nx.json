@@ -27,12 +27,21 @@
     ]
   },
   "projects": {
+    "core": {
+      "tags": []
+    },
     "gtravel": {
       "tags": []
     },
     "gtravel-e2e": {
       "tags": [],
       "implicitDependencies": ["gtravel"]
+    },
+    "shared-auth": {
+      "tags": []
+    },
+    "shared-components": {
+      "tags": []
     }
   }
 }
