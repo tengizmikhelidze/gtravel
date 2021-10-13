@@ -42,6 +42,12 @@
     },
     "shared-components": {
       "tags": []
+    },
+    "shared-domain": {
+      "tags": []
+    },
+    "shared-forms": {
+      "tags": []
     }
   }
 }

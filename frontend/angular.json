@@ -48,6 +48,9 @@
               "apps/gtravel/src/environment-config.json"
             ],
             "styles": [
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
               "apps/gtravel/src/styles.scss",
               "libs/shared/styles/styles.scss",
               "libs/shared/styles/roboto.scss"
@@ -196,6 +199,56 @@
             "lintFilePatterns": [
               "libs/shared/components/src/**/*.ts",
               "libs/shared/components/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "shared-domain": {
+      "projectType": "library",
+      "root": "libs/shared/domain",
+      "sourceRoot": "libs/shared/domain/src",
+      "prefix": "frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/domain"],
+          "options": {
+            "jestConfig": "libs/shared/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/domain/src/**/*.ts",
+              "libs/shared/domain/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "shared-forms": {
+      "projectType": "library",
+      "root": "libs/shared/forms",
+      "sourceRoot": "libs/shared/forms/src",
+      "prefix": "frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/forms"],
+          "options": {
+            "jestConfig": "libs/shared/forms/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/forms/src/**/*.ts",
+              "libs/shared/forms/src/**/*.html"
             ]
           }
         }
