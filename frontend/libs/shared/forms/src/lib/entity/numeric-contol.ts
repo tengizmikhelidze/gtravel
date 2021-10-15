@@ -9,7 +9,7 @@ export class NumericControl<T> extends Control<number, T>{
 
   constructor(options:{
     value?:  number;
-    key?: keyof T;
+    key?: (keyof T) | undefined;
     label?: string;
     required?: boolean;
     controlType?: ControlTypes;

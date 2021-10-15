@@ -5,7 +5,7 @@ import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 
 export  class ControlGroup<T> implements ControlBase<T>{
   isGroup = true;
-  key: keyof T | undefined;
+  key: (keyof T) | undefined;
   label: string;
   options: { key: string; value: string }[];
   order: number;
@@ -13,7 +13,7 @@ export  class ControlGroup<T> implements ControlBase<T>{
   controls: Control<ControlValueTypes, T>[] | undefined;
 
   constructor(options: {
-    key?: keyof T;
+    key?: (keyof T) | undefined;
     label?: string;
     order?: number;
     visible?: boolean;

@@ -6,7 +6,7 @@ import { FormControl, Validators } from '@angular/forms';
 export class Control<valueType extends ControlValueTypes, T> implements ControlBase<T>{
   isGroup = false;
   value?:  valueType;
-  key: keyof T | undefined;
+  key: (keyof T) | undefined;
   label: string;
   required: boolean;
   controlType: ControlTypes;
@@ -21,7 +21,7 @@ export class Control<valueType extends ControlValueTypes, T> implements ControlB
 
   constructor(options: {
     value?: valueType;
-    key?: keyof T;
+    key?: (keyof T) | undefined;
     label?: string;
     required? : boolean;
     order?: number;
@@ -46,7 +46,7 @@ export class Control<valueType extends ControlValueTypes, T> implements ControlB
     this.maxLength = options.maxLength || 524287;
     this.minLength = options.minLength || 0;
     this.options = options.options || [];
-    this.pattern = options.pattern ? { reg : regexTemplate[options.pattern], title: regexTitle[options.pattern] } : null;
+    this.pattern =  options.pattern? {reg: regexTemplate[options.pattern], title: regexTitle[options.pattern]}: null;
   }
 }
 

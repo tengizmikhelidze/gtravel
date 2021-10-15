@@ -1,0 +1,7 @@
+<div [formGroup]='form'>
+  <div [formGroupName]='group.key ? group.key.toString() : ""'>
+    <div *ngFor='let control of group.controls' style='margin-top: 10px'>
+      <form-dynamic-control [control]='control'></form-dynamic-control>
+    </div>
+  </div>
+</div>

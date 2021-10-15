@@ -6,11 +6,11 @@ import { EntityBase } from '../../../../domain/src/lib/entity/entity-base';
 @Injectable({
   providedIn: 'root'
 })
-export class FormGroupService {
+export class FormGroupService<T> {
 
-  addControlsTo(formGroup: FormGroup, controls: ControlBase<EntityBase>[]){
+  addControlsTo(formGroup: FormGroup, controls: ControlBase<T>[]){
     controls.forEach(control => {
-      if(control.key){
+      if(control.key && typeof control.key === 'string'){
         if(!formGroup.get(control.key)){
           if(control.isGroup){
             formGroup.addControl(control.key, createFormGroup(control as ControlGroup<EntityBase>));
@@ -22,9 +22,9 @@ export class FormGroupService {
     })
   }
 
-  removeControlsFrom(formGroup: FormGroup, controls: ControlBase<EntityBase>[]){
+  removeControlsFrom(formGroup: FormGroup, controls: ControlBase<T>[]){
     controls.forEach(control=>{
-      if(control.key){
+      if(control.key && typeof control.key === 'string'){
         formGroup.removeControl(control.key);
       }
     })

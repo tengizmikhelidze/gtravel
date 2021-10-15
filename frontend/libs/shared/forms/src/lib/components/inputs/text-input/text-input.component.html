@@ -1,7 +1,8 @@
-<ng-container>
+<ng-container [formGroup]='form'>
   <input type="text"
          pInputText
-         [formControlName]='control.key'
+         [formControlName]='control.key ? control.key.toString() : ""'
+         [placeholder]='control.label'
          [type]='control.type'
          [minLength]='control.minLength'
          [max]='control.maxLength'/>

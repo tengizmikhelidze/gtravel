@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TextBoxControl } from '../../../entity';
-import { EntityBase } from '../../../../../../domain/src/lib/entity/entity-base';
+import { Control, ControlValueTypes } from '../../../entity';
 import { ControlContainer, FormGroup } from '@angular/forms';
 
 @Component({
@@ -8,8 +7,8 @@ import { ControlContainer, FormGroup } from '@angular/forms';
   templateUrl: './text-input.component.html',
   styleUrls: ['./text-input.component.scss']
 })
-export class TextInputComponent {
-  @Input() control: TextBoxControl<EntityBase>;
+export class TextInputComponent<T> {
+  @Input() control: Control<ControlValueTypes,T>;
   form = this.controlContainer.control as FormGroup
   constructor(private controlContainer: ControlContainer) { }
 }
