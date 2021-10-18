@@ -26,6 +26,6 @@ export class LoginComponent implements OnInit{
   }
 
   get loginImgSrc(): string {
-    return this.environmentManager.readConfig().baseHref + `/assets/${getSeason()}.jpg`
+    return this.environmentManager.readConfig().baseHref + `./assets/${getSeason()}.jpg`
   };
 }
