@@ -1,0 +1,5 @@
+<span [formGroup]='form'>
+  <span [ngSwitch]='control.controlType'>
+    <form-text-input *ngSwitchCase='"textBox"' [control]='control'></form-text-input>
+  </span>
+</span>
