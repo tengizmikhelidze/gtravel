@@ -17,13 +17,14 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-    
     - name: Build
+      working-directory: frontend
       run: |
-        cd frontend
         npm install
-        npm run-script deploy
+        npm run-script deploy-gh
+        cp dist/gtravel/index.html dist/gtravel/404.html
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@4.1.5
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
-        FOLDER: frontend
+        FOLDER: frontend/dist/gtravel

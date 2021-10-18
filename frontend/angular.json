@@ -79,6 +79,27 @@
               ],
               "outputHashing": "all"
             },
+            "github": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/gtravel/src/environments/environment.ts",
+                  "with": "apps/gtravel/src/environments/github.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -96,6 +117,10 @@
             "production": {
               "browserTarget": "gtravel:build:production"
             },
+            "github": {
+              "browserTarget": "gtravel:build:github"
+            },
+
             "development": {
               "browserTarget": "gtravel:build:development"
             }
