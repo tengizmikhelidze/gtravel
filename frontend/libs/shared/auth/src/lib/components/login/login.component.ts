@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { EnvironmentConfigurationService } from '../../../../../../core/src/lib/environment-manager';
-import { FormGroup } from '@angular/forms';
+import { ControlContainer, FormControl, FormGroup } from '@angular/forms';
 import { Control, TextBoxControl } from '../../../../../forms/src/lib/entity';
 import { UserLogin } from '../../entity/user-login-entity';
+import { getSeason } from '../../../../../tools/helpers/date.helper';
+import { FormGroupService } from '../../../../../forms/src/lib/services/form-group.service';
 
 @Component({
   selector: 'auth-login',
@@ -10,24 +12,12 @@ import { UserLogin } from '../../entity/user-login-entity';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit{
-  form: FormGroup = new FormGroup({});
-  controls : Control<string, UserLogin>[] = [
-    new TextBoxControl({
-      key: 'userEmail',
-      label: 'email',
-      required: true,
-      pattern: 'email'
-    }),
-
-    new TextBoxControl({
-      key: 'userPassword',
-      label: 'password',
-      required: true,
-      type: 'password'
-    }),
-
-
-  ]
+  getSeason= getSeason;
+  form: FormGroup = new FormGroup({
+    userEmail: new FormControl(''),
+    userPassword: new FormControl(''),
+    remember: new FormControl()
+  });
 
   constructor(private environmentManager: EnvironmentConfigurationService) {
   }
@@ -36,6 +26,6 @@ export class LoginComponent implements OnInit{
   }
 
   get loginImgSrc(): string {
-    return this.environmentManager.readConfig().baseHref + '/assets/login.jpg'
+    return this.environmentManager.readConfig().baseHref + `/assets/${getSeason()}.jpg`
   };
 }

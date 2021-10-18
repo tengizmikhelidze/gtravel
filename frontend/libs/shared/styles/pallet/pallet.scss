@@ -1,7 +1,9 @@
 $black: #000000;
 $white: #ffffff;
+$season: rgba(#DBA72E, 0.3);
 
 :root{
   --white: #{$white};
   --black: #{$black};
+  --autumn-30: #{$season}
 }

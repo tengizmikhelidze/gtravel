@@ -1,9 +1,15 @@
-<ng-container [formGroup]='form'>
+<div [formGroup]='form'>
   <input type="text"
          pInputText
+         class = 'hideBorder'
+         [class]='"hideBorder "
+         + control.hideBorder.left? "left ": ""
+         + control.hideBorder.right? "right ": ""
+         + control.hideBorder.top? "top ": ""
+         + control.hideBorder.bottom? "bottom" : ""'
          [formControlName]='control.key ? control.key.toString() : ""'
          [placeholder]='control.label'
          [type]='control.type'
          [minLength]='control.minLength'
          [max]='control.maxLength'/>
-</ng-container>
+</div>

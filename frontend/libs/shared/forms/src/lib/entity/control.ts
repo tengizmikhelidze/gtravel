@@ -18,7 +18,7 @@ export class Control<valueType extends ControlValueTypes, T> implements ControlB
   maxLength: number;
   minLength: number;
   order: number;
-
+  hideBorder: {top: boolean, right: boolean, left: boolean, bottom: boolean};
   constructor(options: {
     value?: valueType;
     key?: (keyof T) | undefined;
@@ -33,6 +33,7 @@ export class Control<valueType extends ControlValueTypes, T> implements ControlB
     pattern?: PatterTypes;
     maxLength?: number;
     minLength?: number;
+    hideBorder?: {top? : boolean, right?: boolean, left?: boolean, bottom?: boolean};
   } = {}) {
     this.value = options.value;
     this.key = options.key;
@@ -47,6 +48,9 @@ export class Control<valueType extends ControlValueTypes, T> implements ControlB
     this.minLength = options.minLength || 0;
     this.options = options.options || [];
     this.pattern =  options.pattern? {reg: regexTemplate[options.pattern], title: regexTitle[options.pattern]}: null;
+    this.hideBorder = options.hideBorder ?
+      {top: false, right: false, left: false, bottom: false, ...options.hideBorder} :
+      {top: false, right: false, left: false, bottom: false};
   }
 }
 
