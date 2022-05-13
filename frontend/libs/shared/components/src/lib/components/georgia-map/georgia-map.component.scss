@@ -1,0 +1,151 @@
+.country-svg-wrapper{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.country-svg{
+  overflow:visible;
+  position: relative;
+
+  .region {
+    cursor: pointer;
+    &:hover .stroke {
+      fill: var(--white);
+      stroke: black
+    }
+  }
+
+  .stroke{
+    fill:none;
+    stroke:#1D1D1B;
+  }
+
+  .svg-text {
+    fill: black;
+    font-size: 25px;
+    //font-weight: bold;
+  }
+
+  .occupied-territory {
+    stroke: red;
+  }
+
+  .abkhazeti {
+    .stroke {
+      fill: var(--abkhazeti);
+    }
+  }
+
+  .svaneti {
+    .stroke {
+      fill: var(--svaneti);
+    }
+    transform: translate(508px, 124px);
+  }
+
+  .samegrelo {
+    .stroke {
+      fill: var(--samegrelo);
+    }
+    transform: translate(421px, 299px);
+  }
+
+  .guria {
+    .stroke {
+      fill: var(--guria);
+    }
+    transform: translate(465px, 530px);
+  }
+
+  .achara {
+    .stroke {
+      fill: var(--adjara);
+    }
+    transform: translate(417.5px, 619px);
+  }
+
+  .samckhe-javakheti {
+    .stroke {
+      fill: var(--samckhe-javakheti);
+    }
+    transform: translate(676px, 611px);
+  }
+
+  .imereti {
+    .stroke {
+      fill: var(--imereti);
+    }
+    transform: translate(600px, 380px);
+  }
+
+  .racha-lechkhumi {
+    .stroke {
+      fill: var(--racha);
+    }
+    transform: translate(642px, 233.5px);
+  }
+
+  .samachablo {
+    transform: translate(979px, 327px);
+    .stroke {
+      fill: var(--shida-kartli);
+    }
+  }
+
+  .shida-kartli {
+    transform: translate(929px, 502px);
+    .stroke {
+      fill: var(--shida-kartli);
+    }
+  }
+
+  .qvemo-kartli {
+    .stroke {
+      fill: var(--qvemo-kartli);
+    }
+    transform: translate(1000px, 642.5px);
+  }
+
+  .tbilisi {
+    .stroke {
+      fill: var(--qvemo-kartli);
+    }
+    transform: translate(1274px, 658px);
+  }
+
+  .mckheta-mtianeti {
+    .stroke {
+      fill: var(--mckheta-mtianeti);
+    }
+    transform: translate(1151.5px, 306.5px);
+  }
+
+  .kakheti {
+    .stroke {
+      fill: var(--kakheti);
+    }
+    transform: translate(1371px, 381px);
+  }
+
+  .mchketa-mtianeti-text {
+    transform: rotate(270deg);
+  }
+}
+
+.no-fill {
+  fill: white !important;
+}
+
+.opacity-03 {
+  animation-name: opacity-animation;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes opacity-animation {
+  25%   {opacity: 0.9;}
+  50%  {opacity: 0.7;}
+  75%  {opacity: 0.5;}
+  100% {opacity: 0.3;}
+}
+
