@@ -1,0 +1,36 @@
+<div class='full-page'>
+
+  <div class='carousel-wrapper'>
+    <div class='carousel-container'>
+      <div class='change-buttons'>
+
+        <div class='change-button prev' (click)='changeCarousel("prev")'>
+          <fa-icon [icon]='arrowLeft'></fa-icon>
+        </div>
+
+        <div class='change-button next' (click)='changeCarousel("next")'>
+          <fa-icon [icon]='arrowRight'></fa-icon>
+        </div>
+
+      </div>
+
+      <div class='carousel'>
+        <ng-container *ngFor='let background of backgrounds; let i = index'>
+          <div class='carousel-item fade-animation' [ngClass]='this.carousel.currentIndex === i ? "show" : "hide"'>
+            <img class='carousel-img' [src]='background.url'>
+            <div class='gradient'></div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <header class="header-wrapper">
+    <app-header></app-header>
+  </header>
+
+  <main class='main-wrapper'>
+    <app-georgia-map></app-georgia-map>
+  </main>
+
+</div>

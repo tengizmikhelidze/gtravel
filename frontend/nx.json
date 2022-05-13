@@ -48,6 +48,9 @@
     },
     "shared-forms": {
       "tags": []
+    },
+    "shared-services": {
+      "tags": []
     }
   }
 }

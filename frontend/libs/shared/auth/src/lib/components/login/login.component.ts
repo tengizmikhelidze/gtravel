@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EnvironmentConfigurationService } from '../../../../../../core/src/lib/environment-manager';
-import { ControlContainer, FormControl, FormGroup } from '@angular/forms';
-import { Control, TextBoxControl } from '../../../../../forms/src/lib/entity';
-import { UserLogin } from '../../entity/user-login-entity';
+import { FormControl, FormGroup } from '@angular/forms';
 import { getSeason } from '../../../../../tools/helpers/date.helper';
-import { FormGroupService } from '../../../../../forms/src/lib/services/form-group.service';
 
 @Component({
   selector: 'auth-login',

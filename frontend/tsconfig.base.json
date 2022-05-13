@@ -20,7 +20,9 @@
       "@frontend/shared/auth": ["libs/shared/auth/src/index.ts"],
       "@frontend/shared/components": ["libs/shared/components/src/index.ts"],
       "@frontend/shared/domain": ["libs/shared/domain/src/index.ts"],
-      "@frontend/shared/forms": ["libs/shared/forms/src/index.ts"]
+      "@frontend/shared/forms": ["libs/shared/forms/src/index.ts"],
+      "@frontend/shared/services": ["libs/shared/services/src/index.ts"],
+      "@libs/models" : ["libs/shared/models/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

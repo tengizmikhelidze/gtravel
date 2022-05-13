@@ -12,8 +12,8 @@ export class GtravelAuthConfigService extends AuthConfigService{
   get(): AuthConfig | undefined {
     return this.environmentService.readConfig() ?
       {
-        apiLoginUrl: `${this.environmentService.readConfig().apiUrl}/auth/login`,
-        apiLogoutUrl: `${this.environmentService.readConfig().apiUrl}/auth/logout`,
+        apiLoginUrl: `${this.environmentService.readConfig().apiUrl || ''}/auth/login`,
+        apiLogoutUrl: `${this.environmentService.readConfig().apiUrl || ''}/auth/logout`,
       } : undefined
   }
 }

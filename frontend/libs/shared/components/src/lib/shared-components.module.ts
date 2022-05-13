@@ -1,18 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomInputsComponent } from './components/custom-inputs/custom-inputs.component';
+import {HeaderComponent} from "./components/header/header.component";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { GeorgiaMapComponent } from './components/georgia-map/georgia-map.component';
 
-const components = [
-  CustomInputsComponent
+const Components = [
+  CustomInputsComponent,
+  HeaderComponent,
+  GeorgiaMapComponent
+]
+
+const ExternalModules = [
+  FontAwesomeModule
 ]
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [
+    CommonModule
+    , ...ExternalModules
+  ],
   declarations: [
-    ...components
+    ...Components
   ],
   exports: [
-    ...components
+    ...Components
   ]
 })
 export class SharedComponentsModule {}

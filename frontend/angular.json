@@ -120,7 +120,6 @@
             "github": {
               "browserTarget": "gtravel:build:github"
             },
-
             "development": {
               "browserTarget": "gtravel:build:development"
             }
@@ -274,6 +273,31 @@
             "lintFilePatterns": [
               "libs/shared/forms/src/**/*.ts",
               "libs/shared/forms/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "shared-services": {
+      "projectType": "library",
+      "root": "libs/shared/services",
+      "sourceRoot": "libs/shared/services/src",
+      "prefix": "frontend",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/services"],
+          "options": {
+            "jestConfig": "libs/shared/services/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/services/src/**/*.ts",
+              "libs/shared/services/src/**/*.html"
             ]
           }
         }

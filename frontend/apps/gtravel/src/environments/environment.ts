@@ -6,6 +6,8 @@ import { MergedEnvironment } from '../../../../libs/core/src/lib/environment-man
 
 export const environment : MergedEnvironment = {
   production: false,
+  apiUrl: 'http://localhost:4000/',
+  baseHref: ''
 };
 
 /*

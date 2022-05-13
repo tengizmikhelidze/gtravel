@@ -1,9 +1,41 @@
 $black: #000000;
 $white: #ffffff;
 $season: rgba(#DBA72E, 0.3);
+$primary-green: #34E0A1;
+$secondary-green: #f4faf2;
+$primary-background: #FFF2E1;
+$kakheti: #FFCB20;
+$mckheta-mtianeti: #FFA060;
+$shida-kartli: #FFE880;
+$qvemo-kartli: #B4CE73;
+$samckhe-javakheti: #FFC19C;
+$imereti: #BAE0A3;
+$racha: #F7B2B5;
+$svaneti: #FFCB20;
+$abkhazeti: #DBB0E5;
+$samegrelo: #B4CE73;
+$guria: #FF8385;
+$adjara: #EEC9FF;
+
 
 :root{
   --white: #{$white};
   --black: #{$black};
-  --autumn-30: #{$season}
+  --autumn-30: #{$season};
+  --primaryText: var(--black);
+  --primary-green: #{$primary-green};
+  --secondary-green: #{$secondary-green};
+  --primary-background: #{$primary-background};
+  --kakheti: #{$kakheti};
+  --mckheta-mtianeti: #{$mckheta-mtianeti};
+  --shida-kartli: #{$shida-kartli};
+  --qvemo-kartli: #{$qvemo-kartli};
+  --samckhe-javakheti: #{$samckhe-javakheti};
+  --imereti: #{$imereti};
+  --racha: #{$racha};
+  --svaneti: #{$svaneti};
+  --abkhazeti: #{$abkhazeti};
+  --samegrelo: #{$samegrelo};
+  --guria: #{$guria};
+  --adjara: #{$adjara};
 }
