@@ -1,7 +1,6 @@
 .slide-animation {
   position: absolute;
-  left: 90%;
-  background: blue;
+  transform: translateX(90%);
   height: 100%;
   width: 100%;
   -webkit-animation: slide 1s forwards;
@@ -9,9 +8,9 @@
 }
 
 @-webkit-keyframes slide {
-  100% { left: 0; }
+  100% { transform: translateX(0); }
 }
 
 @keyframes slide {
-  100% { left: 0; }
+  100% { transform: translateX(0); }
 }

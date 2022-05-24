@@ -4,11 +4,13 @@ import { CustomInputsComponent } from './components/custom-inputs/custom-inputs.
 import {HeaderComponent} from "./components/header/header.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { GeorgiaMapComponent } from './components/georgia-map/georgia-map.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 const Components = [
   CustomInputsComponent,
   HeaderComponent,
-  GeorgiaMapComponent
+  GeorgiaMapComponent,
+  CalendarComponent
 ]
 
 const ExternalModules = [
@@ -21,7 +23,7 @@ const ExternalModules = [
     , ...ExternalModules
   ],
   declarations: [
-    ...Components
+    ...Components,
   ],
   exports: [
     ...Components

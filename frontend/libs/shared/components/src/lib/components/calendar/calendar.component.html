@@ -1,0 +1,92 @@
+<div class='calendar-wrapper'>
+  <ng-container [ngSwitch]='calendarViewMode'>
+    <ng-container *ngSwitchCase='"calendar"'>
+      <div class='months'>
+        <div class='month'
+             *ngFor='let month of months'
+             [ngClass]='dateValue.getMonth() === month.value ? "active":"inactive"'
+             (click)='changeMonth(month.value)'>
+          {{month.key}}
+        </div>
+      </div>
+      <div class='picker'>
+        <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+        <div class='dates'>
+          <table class='dates-table'>
+            <thead>
+              <tr>
+                <th *ngFor='let day of days'>
+                  {{day}}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let week of arrayFromNumber(weeksInMonth(dateValue)); let weekNumber = index'>
+                <td *ngFor='let day of calendarWeekView(dateValue)[weekNumber+1]'
+                    [ngClass]='{
+                      "active" : day
+                        && (firstDayValue.getDate() === day
+                        && firstDayValue.getMonth() === getDateFromDay(day).getMonth()
+                        && firstDayValue.getFullYear() === getDateFromDay(day).getFullYear())
+                        ||
+                        (day
+                        && secondDayValue
+                        && getDateFromDay(day).getTime() > firstDayValue.getTime() && getDateFromDay(day).getTime() < secondDayValue.getTime()),
+                      "today" : day
+                        && day === today.getDate()
+                        && dateValue.getMonth() === today.getMonth()
+                        && dateValue.getFullYear() === today.getFullYear()
+                    }'
+                    (click)='weekNumber+1 === 1 && day && day > 7 ? null : selectDate(day)'>
+                  {{day}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase='"year-range"'>
+      <div class='year-picker' >
+        <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+        <div class='range-picker'>
+          <div class='range'
+               *ngFor='let range of getRangeStrings([1900, 2100], 20)'
+               [ngClass]='{"active": activeRange(range)}'
+               (click)='pickedRange=range; this.changeCalendarViewMode("year")'>
+            {{range}}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase='"year"'>
+      <div class='year-picker'>
+        <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+        <div class='year-list'>
+          <div class='range' *ngFor='let year of yearsFromYearRange(pickedRange)' (click)='changeYear(year)'>
+            {{year}}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
+
+
+<ng-template #headerTemplate>
+  <div class='header'>
+    <div class='month-year'
+         (click)='changeCalendarViewMode(this.calendarViewMode === "calendar"
+    ? "year-range" : this.calendarViewMode === "year-range"
+    ? "calendar" : this.calendarViewMode === "year"
+    ? "year-range" : "year")'>
+      <fa-icon *ngIf='this.calendarViewMode !== "calendar"' [icon]='faArrowCircleLeft'></fa-icon>
+      <div>
+        {{ this.dateValue | date: 'MMM y'}}
+      </div>
+    </div>
+    <div class='today' (click)='setToday()'>
+      Today
+    </div>
+  </div>
+</ng-template>
