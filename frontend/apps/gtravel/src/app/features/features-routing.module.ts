@@ -11,6 +11,11 @@ const routes: Routes = [
   {
     path: 'calendar',
     component: CalendarComponent
+  },
+  {
+    path: 'regions',
+    loadChildren: ()=>
+      import('./regions/regions.module').then((m)=>m.RegionsModule)
   }
 ];
 

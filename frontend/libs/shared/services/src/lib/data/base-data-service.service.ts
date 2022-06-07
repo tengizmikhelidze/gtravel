@@ -11,4 +11,8 @@ export class BaseDataServiceService<T extends BaseEntity> {
   protected getList(url: string): Observable<ResultList<T>> {
     return this.httpClient.get<ResultList<T>>(this.environmentManager.readConfig().apiUrl + url)
   }
+
+  protected getOne(url: string, slug: string): Observable<T>{
+    return this.httpClient.get<T>(this.environmentManager.readConfig().apiUrl + url +'/' + slug)
+  }
 }

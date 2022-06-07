@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'shared-services',
+  displayName: 'shared-interceptors',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/shared/services',
+  coverageDirectory: '../../../coverage/libs/shared/interceptors',
   transform: {
     '^.+\\.(ts|js|html)$': 'jest-preset-angular',
   },

@@ -10,7 +10,7 @@
   .region {
     cursor: pointer;
     &:hover .stroke {
-      fill: var(--white);
+      fill: var(--primary-green);
       stroke: black
     }
   }

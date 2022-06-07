@@ -1,1 +1,3 @@
-export const ImeretiSlug = 'imereti'
+export enum RegionSlugs {
+  imereti = 'imereti'
+}

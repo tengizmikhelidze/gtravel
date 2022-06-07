@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import {CommonModule} from "@angular/common";
+import { LoadingModule } from '../../../../libs/shared/components/src/lib/components/loading/loading.module';
 
 const InternalModules = [
   HttpClientModule,
   AppRoutingModule,
   CoreServicesModule,
   GtravelAuthModule,
+  LoadingModule
 ]
 
 @NgModule({

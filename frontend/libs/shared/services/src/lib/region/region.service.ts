@@ -16,4 +16,7 @@ export class RegionService extends BaseDataServiceService<Region>{
   getAll(): Observable<ResultList<Region>> {
     return this.getList('regions')
   }
+  getOneWithSlug(slug: string) : Observable<Region>{
+    return this.getOne('regions', slug)
+  }
 }

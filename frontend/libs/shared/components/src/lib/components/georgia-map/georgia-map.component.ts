@@ -1,21 +1,17 @@
-import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { RegionService } from '../../../../../services/src/lib/region/region.service';
+import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { RegionSlugs } from '../../../../../slugs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-georgia-map',
   templateUrl: './georgia-map.component.html',
   styleUrls: ['./georgia-map.component.scss']
 })
-export class GeorgiaMapComponent implements OnInit {
-
+export class GeorgiaMapComponent {
+  RegionSlugs = RegionSlugs;
   @ViewChildren('regionPath') regionPath: QueryList<ElementRef>
 
-  constructor(private regionService: RegionService) { }
-
-  ngOnInit(): void {
-    this.regionService.getAll()
-      .subscribe((data)=>{console.log(data)})
-  }
+  constructor(private router: Router) { }
 
   mouseOverOnRegion($event: MouseEvent) {
     this.regionPath.forEach(regionPath => {
@@ -29,5 +25,9 @@ export class GeorgiaMapComponent implements OnInit {
     this.regionPath.forEach(regionPath => {
       regionPath.nativeElement.classList.remove('opacity-03')
     })
+  }
+
+  regionClick(slug: string) {
+    this.router.navigate(['regions', slug])
   }
 }
