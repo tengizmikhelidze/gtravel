@@ -6,4 +6,6 @@ export interface Dish  extends BaseEntity{
   history: string;
   createdAt: string;
   updatedAt: string;
+  imageUrl: string;
+  rating: string
 }

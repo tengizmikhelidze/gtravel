@@ -1,3 +1,15 @@
+::ng-deep{
+  .search-autocomplete {
+    z-index: 9999;
+    .p-button {
+      background: rgba(255,255,255, 0.3);
+      border: none;
+      &:hover {
+        background: rgba(255,255,255, 0.3)
+      }
+    }
+  }
+}
 .header-content {
   height: 100%;
   display: flex;
@@ -30,6 +42,7 @@
       height: 100%;
       display: flex;
       li {
+        text-transform: capitalize;
         height: 100%;
         display: flex;
         justify-content: center;

@@ -1,0 +1,28 @@
+.footer-content {
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+  margin: 0 auto;
+  .wrapper-1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    .rights-owners {
+      .owners {
+        display: flex;
+        gap: 10px;
+      }
+    }
+  }
+  .footer-logo {
+    picture{
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}

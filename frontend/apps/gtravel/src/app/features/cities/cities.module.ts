@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { RegionsRoutingModule } from './regions-routing.module';
-import { RegionComponent } from './component/region.component';
+import { CitiesRoutingModule } from './cities-routing.module';
+import { CitiesComponent } from './component/cities.component';
 import { SharedComponentsModule } from '@frontend/shared/components';
 import { PipesHelperModule } from '../../../../../../libs/shared/tools/pipes/directives.module';
 import { CarouselModule } from 'primeng/carousel';
@@ -13,11 +13,11 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    RegionComponent
+    CitiesComponent
   ],
   imports: [
     CommonModule,
-    RegionsRoutingModule,
+    CitiesRoutingModule,
     SharedComponentsModule,
     PipesHelperModule,
     CarouselModule,
@@ -26,4 +26,4 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ]
 })
-export class RegionsModule { }
+export class CitiesModule { }

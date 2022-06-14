@@ -9,13 +9,14 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import {CommonModule} from "@angular/common";
 import { LoadingModule } from '../../../../libs/shared/components/src/lib/components/loading/loading.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const InternalModules = [
   HttpClientModule,
   AppRoutingModule,
   CoreServicesModule,
   GtravelAuthModule,
-  LoadingModule
+  LoadingModule,
 ]
 
 @NgModule({
@@ -23,6 +24,7 @@ const InternalModules = [
   imports: [
     CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     ...InternalModules
   ],
   providers: [

@@ -1,0 +1,132 @@
+<div class='region-wrapper' *ngIf='!loading'>
+  <header class="header-wrapper">
+    <app-header></app-header>
+  </header>
+
+  <main>
+    <div class='wrapper'>
+      <div class='explore'>
+        <h1>გაიცანი <span class='region-slug'>{{citySlug | Georgian}}</span></h1></div>
+      </div>
+    <div class='wrapper'>
+      <div class='gallery'>
+<!--        <div class='row'>-->
+<!--          <div class='column first'>-->
+<!--            <img *ngIf='city && city.sightseeing; else noImg' [src]='city.sightseeing.imageUrl ?? ""' (error)='onError($event.target)'>-->
+<!--          </div>-->
+<!--          <div class='column second'>-->
+<!--            <img *ngIf='city && city.cities[1].sightseeing; else noImg' [src]='city.cities[1].sightseeing.imageUrl ?? ""' (error)='onError($event.target)'>-->
+<!--            <img *ngIf='city && city.cities[2].sightseeing; else noImg' [src]='city.cities[2].sightseeing.imageUrl ?? ""' (error)='onError($event.target)'>-->
+<!--          </div>-->
+<!--          <ng-template #noImg>-->
+<!--            <img [src]='this.imagePlaceholder'>-->
+<!--          </ng-template>-->
+<!--        </div>-->
+      </div>
+    </div>
+    <div class='wrapper color-2'>
+      <div class='about'>
+        <h2><span class='region-slug'>{{citySlug | Georgian}}-ის</span> შესახებ</h2>
+        <div class='info'>
+          <div class='history'>
+            {{this.city?.history}}
+          </div>
+          <div class='description'>
+            {{this.city?.description}}
+          </div>
+          <div class='other-info'>
+            <div class='area'>ფართობი: {{this.city?.area}} კმ<sup>2</sup></div>
+            <div class='population'>მოსახლეობის რაოდენობა: {{this.city?.population}}</div>
+            <div class='population'>მოსახლეობის სიმჭიდროვე: {{this.city?.populationDensity}} მოს/კმ<sup>2</sup></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='wrapper'>
+      <div class='interesting'>
+        <h2>საინტერესო</h2>
+        <div class='hotels carousel-gallery'>
+          <div class='info'>
+            <h3>ეძებთ დასარჩენს?</h3>
+            <p>ადგილები სადაც დარჩენას შეძლებთ {{citySlug | Georgian}}-ში</p>
+          </div>
+          <div class='carousel-item' [ngClass]='{"no-item": !city || !city.hotels[0]}'>
+            <ng-container *ngIf='city && city.hotels[0]; else noHotel'>
+              <img [src]='city.hotels[0].imageUrl[0]' (error)='onError($event.target)'>
+              <div class='name'>{{city.hotels[0].name || ''}}</div>
+              <div class='rating'>
+                <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='city.hotels[0].rating'></p-rating>
+              </div>
+            </ng-container>
+          </div>
+          <div class='carousel-item' [ngClass]='{"no-item": !city || !city.hotels[1]}'>
+            <ng-container *ngIf='city && city.hotels[1]; else noHotel'>
+              <img [src]='city.hotels[1].imageUrl[0]' (error)='onError($event.target)'>
+              <div class='name'>{{city.hotels[1].name || ''}}</div>
+              <div class='rating'>
+                <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='city.hotels[1].rating'></p-rating>
+              </div>
+            </ng-container>
+          </div>
+          <div class='carousel-item' [ngClass]='{"no-item": !city || !city.hotels[2]}'>
+            <ng-container *ngIf='city && city.hotels[2]; else noHotel'>
+              <img [src]='city.hotels[2].imageUrl[0]' (error)='onError($event.target)'>
+              <div class='name'>{{city.hotels[2].name || ''}}</div>
+              <div class='rating'>
+                <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='city.hotels[2].rating'></p-rating>
+              </div>
+            </ng-container>
+          </div>
+          <ng-template #noHotel>
+            <div class='no-carousel-item'>
+              <fa-icon [icon]='faBed'></fa-icon>
+            </div>
+          </ng-template>
+        </div>
+        <div class='restaurants carousel-gallery'>
+          <div class='info'>
+            <h3>ეძებთ რესტორანს?</h3>
+            <p>ადგილები სადაც გემრიელ სამზარეულოს გასინჯავთ {{citySlug | Georgian}}-ში</p>
+          </div>
+          <div class='carousel-item' [ngClass]='{"no-item": !city || !city.restaurants[0]}'>
+            <ng-container *ngIf='city && city.restaurants[0]; else noRestaurant'>
+              <img [src]='city.restaurants[0].imageUrl[0]' (error)='onError($event.target)'>
+              <div class='name'>{{city.restaurants[0].name || ''}}</div>
+              <div class='rating'>
+                <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='city.restaurants[0].rating'></p-rating>
+              </div>
+            </ng-container>
+          </div>
+          <div class='carousel-item' [ngClass]='{"no-item": !city || !city.restaurants[1]}'>
+            <ng-container *ngIf='city && city.restaurants[1]; else noRestaurant'>
+              <img [src]='city.restaurants[1].imageUrl[0]' (error)='onError($event.target)'>
+              <div class='name'>{{city.restaurants[1].name || ''}}</div>
+              <div class='rating'>
+                <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='city.restaurants[1].rating'></p-rating>
+              </div>
+            </ng-container>
+          </div>
+          <div class='carousel-item' [ngClass]='{"no-item": !city || !city.restaurants[2]}'>
+            <ng-container *ngIf='city && city.restaurants[2]; else noRestaurant'>
+              <img [src]='city.restaurants[2].imageUrl[0]' (error)='onError($event.target)'>
+              <div class='name'>{{city.restaurants[2].name || ''}}</div>
+              <div class='rating'>
+                <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='city.restaurants[2].rating'></p-rating>
+              </div>
+            </ng-container>
+          </div>
+          <ng-template #noRestaurant>
+            <div class='no-carousel-item'>
+              <fa-icon [icon]='faUtensils'></fa-icon>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <footer>
+    <app-footer></app-footer>
+  </footer>
+</div>

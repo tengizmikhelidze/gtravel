@@ -15,4 +15,5 @@ export interface City extends BaseEntity{
   hotels: Hotel[];
   createdAt: string;
   updatedAt: string;
+  route? : string
 }

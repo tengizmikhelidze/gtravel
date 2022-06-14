@@ -15,4 +15,5 @@ export interface Region extends BaseEntity{
   dishes: Dish[];
   createdAt: string;
   updatedAt: string;
+  route? : string
 }

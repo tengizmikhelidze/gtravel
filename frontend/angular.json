@@ -53,7 +53,7 @@
               "node_modules/primeicons/primeicons.css",
               "apps/gtravel/src/styles.scss",
               "libs/shared/styles/styles.scss",
-              "libs/shared/styles/roboto.scss"
+              "libs/shared/styles/lato.scss"
             ],
             "scripts": []
           },

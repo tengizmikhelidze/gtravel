@@ -5,17 +5,22 @@ import { HeaderComponent } from './components/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { GeorgiaMapComponent } from './components/georgia-map/georgia-map.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
-import { LoadingComponent } from './components/loading/loading.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { RouterModule } from '@angular/router';
+import {AutoCompleteModule} from 'primeng-lts/autocomplete';
+import { FormsModule } from '@angular/forms';
 
 const Components = [
   CustomInputsComponent,
   HeaderComponent,
   GeorgiaMapComponent,
-  CalendarComponent
+  CalendarComponent,
+  FooterComponent
 ]
 
 const ExternalModules = [
-  FontAwesomeModule
+  FontAwesomeModule,
+  AutoCompleteModule
 ]
 
 const Providers = [
@@ -23,8 +28,8 @@ const Providers = [
 
 @NgModule({
   imports: [
-    CommonModule
-    , ...ExternalModules
+    CommonModule,
+    ...ExternalModules, RouterModule, FormsModule
   ],
   declarations: [
     ...Components,
