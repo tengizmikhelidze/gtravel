@@ -27,6 +27,11 @@ const routes: Routes = [
     loadChildren: ()=>
       import('./dishes/dishes.module').then((m)=>m.DishesModule)
   },
+  {
+    path: 'hotels',
+    loadChildren: ()=>
+      import('./hotels/hotels.module').then((m)=>m.HotelsModule)
+  },
 
 ];
 

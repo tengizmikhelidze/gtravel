@@ -1,26 +1,20 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Dish } from '@libs/models';
+import { Dish, Hotel } from '@libs/models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EnvironmentConfigurationService } from '../../../../../../../libs/core/src/lib/environment-manager';
-import {
-  faArrowAltCircleLeft,
-  faArrowAltCircleRight,
-  faBed,
-  faTree,
-  faUtensils
-} from '@fortawesome/free-solid-svg-icons';
-import { DishesService } from '../../../../../../../libs/shared/services/src/lib/dishes/dishes.service';
+import { faArrowAltCircleLeft, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { Carousel } from '../../main/entity/carousel';
+import { HotelsService } from '../../../../../../../libs/shared/services/src/lib/hotels/hotels.service';
 
 @Component({
   selector: 'frontend-component',
-  templateUrl: './dishes.component.html',
-  styleUrls: ['./dishes.component.scss']
+  templateUrl: './hotels.component.html',
+  styleUrls: ['./hotels.component.scss']
 })
-export class DishesComponent {
+export class HotelsComponent {
   readonly rightArrow = faArrowAltCircleRight;
   readonly leftArrow = faArrowAltCircleLeft;
-  dishes: Dish[] = [];
+  hotels: Hotel[] = [];
   carousel: Carousel = {
     prevIndex: 0,
     currentIndex: 0,
@@ -29,22 +23,21 @@ export class DishesComponent {
   loading : boolean = false;
   @ViewChild('dishGallery') dishGallery : ElementRef;
   dishModal: boolean = false;
-  selectedDish: Dish;
+  selectHotel: Hotel;
 
   get imagePlaceholder(): string {
     return this.environmentManager.readConfig().baseHref + `./assets/placeholders/placeholder-image.png`
   };
 
   constructor(private activatedRoute: ActivatedRoute,
-              private dishesService: DishesService,
+              private hotelsService: HotelsService,
               private router: Router,
               private environmentManager: EnvironmentConfigurationService) {
     this.loading = true;
-    this.dishesService.getAll()
+    this.hotelsService.getAll()
       .subscribe(
         (data)=>{
-          console.log(data)
-          this.dishes = data.items
+          this.hotels = data.items
           this.loading = false;
         }
       )
@@ -58,7 +51,7 @@ export class DishesComponent {
   changeStep(step: 'prev' | 'next') {
     if(this.carousel.currentIndex === 0 && step==='prev'){
       return
-    } else if(this.carousel.currentIndex + 1 === Math.ceil(this.dishes.length / 10) && step === 'next'){
+    } else if(this.carousel.currentIndex + 1 === Math.ceil(this.hotels.length / 10) && step === 'next'){
       return;
     } else {
       this.carousel.prevIndex = this.carousel.currentIndex;
@@ -66,8 +59,8 @@ export class DishesComponent {
     }
   }
 
-  selectDish(dish: Dish) {
-    this.selectedDish = dish
+  selectDish(hotel: Hotel) {
+    this.selectHotel = hotel
     this.dishModal = true;
   }
 

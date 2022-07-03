@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { faBed, faBreadSlice, faMap, faTicket, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { EnvironmentConfigurationService } from '../../../../../../core/src/lib/environment-manager';
 import { RegionService } from '../../../../../services/src/lib/region/region.service';
@@ -7,7 +7,7 @@ import { combineLatest } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { City, Dish, Region } from '@libs/models';
 import { Router } from '@angular/router';
-import { DishesService } from '../../../../../services/src/lib/dishes/dishes.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -31,11 +31,10 @@ export class HeaderComponent {
   constructor(private environmentManager: EnvironmentConfigurationService,
               private regionService: RegionService,
               private citiesService: CitiesService,
-              private dishesService: DishesService,
               private router: Router) {
-    combineLatest([this.regionService.getAll(), this.citiesService.getAll(), this.dishesService.getAll()])
+    combineLatest([this.regionService.getAll(), this.citiesService.getAll()])
       .pipe(
-        tap(([regions, cities, dishes])=>{
+        tap(([regions, cities])=>{
           regions.items = regions.items.map(region=> {
             return {
               ...region,
@@ -48,13 +47,7 @@ export class HeaderComponent {
               route: 'cities'
             }
           });
-          dishes.items = dishes.items.map(dishes=> {
-            return {
-              ...dishes,
-              route: 'dishes'
-            }
-          });
-          this.searchSuggestions = [...regions.items, ...cities.items, ...dishes.items]
+          this.searchSuggestions = [...regions.items, ...cities.items]
         })
       )
       .subscribe()

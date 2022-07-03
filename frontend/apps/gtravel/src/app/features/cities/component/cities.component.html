@@ -10,18 +10,18 @@
       </div>
     <div class='wrapper'>
       <div class='gallery'>
-<!--        <div class='row'>-->
-<!--          <div class='column first'>-->
-<!--            <img *ngIf='city && city.sightseeing; else noImg' [src]='city.sightseeing.imageUrl ?? ""' (error)='onError($event.target)'>-->
-<!--          </div>-->
-<!--          <div class='column second'>-->
-<!--            <img *ngIf='city && city.cities[1].sightseeing; else noImg' [src]='city.cities[1].sightseeing.imageUrl ?? ""' (error)='onError($event.target)'>-->
-<!--            <img *ngIf='city && city.cities[2].sightseeing; else noImg' [src]='city.cities[2].sightseeing.imageUrl ?? ""' (error)='onError($event.target)'>-->
-<!--          </div>-->
-<!--          <ng-template #noImg>-->
-<!--            <img [src]='this.imagePlaceholder'>-->
-<!--          </ng-template>-->
-<!--        </div>-->
+        <div class='row'>
+          <div class='column first'>
+            <img [src]='this.imgGalleryData[0] ?? ""' (error)='onImgGalleryError($event.target)'>
+          </div>
+          <div class='column second'>
+            <img [src]='this.imgGalleryData[1] ?? ""' (error)='onImgGalleryError($event.target)'>
+            <img [src]='this.imgGalleryData[2] ?? ""' (error)='onImgGalleryError($event.target)'>
+          </div>
+          <ng-template #noImg>
+            <img [src]='this.imagePlaceholder'>
+          </ng-template>
+        </div>
       </div>
     </div>
     <div class='wrapper color-2'>
@@ -50,33 +50,20 @@
             <h3>ეძებთ დასარჩენს?</h3>
             <p>ადგილები სადაც დარჩენას შეძლებთ {{citySlug | Georgian}}-ში</p>
           </div>
-          <div class='carousel-item' [ngClass]='{"no-item": !city || !city.hotels[0]}'>
-            <ng-container *ngIf='city && city.hotels[0]; else noHotel'>
-              <img [src]='city.hotels[0].imageUrl[0]' (error)='onError($event.target)'>
-              <div class='name'>{{city.hotels[0].name || ''}}</div>
+          <ng-container *ngFor='let hotel of hotelsData; let i = index'>
+            <div *ngIf='i<3' class='carousel-item'>
+              <img [src]='hotel.imageUrl' (error)='onError($event.target)'>
+              <div class='name'>{{hotel.description.split(" ")[0] || ''}}</div>
               <div class='rating'>
-                <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='city.hotels[0].rating'></p-rating>
+                <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='hotel.rating'></p-rating>
               </div>
-            </ng-container>
-          </div>
-          <div class='carousel-item' [ngClass]='{"no-item": !city || !city.hotels[1]}'>
-            <ng-container *ngIf='city && city.hotels[1]; else noHotel'>
-              <img [src]='city.hotels[1].imageUrl[0]' (error)='onError($event.target)'>
-              <div class='name'>{{city.hotels[1].name || ''}}</div>
-              <div class='rating'>
-                <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='city.hotels[1].rating'></p-rating>
-              </div>
-            </ng-container>
-          </div>
-          <div class='carousel-item' [ngClass]='{"no-item": !city || !city.hotels[2]}'>
-            <ng-container *ngIf='city && city.hotels[2]; else noHotel'>
-              <img [src]='city.hotels[2].imageUrl[0]' (error)='onError($event.target)'>
-              <div class='name'>{{city.hotels[2].name || ''}}</div>
-              <div class='rating'>
-                <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='city.hotels[2].rating'></p-rating>
-              </div>
-            </ng-container>
-          </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf='hotelsData.length < 3'>
+            <div *ngFor='let temp of arrayFromNumber(3-hotelsData.length)' class='carousel-item'>
+              <div *ngTemplateOutlet='noHotel'></div>
+            </div>
+          </ng-container>
           <ng-template #noHotel>
             <div class='no-carousel-item'>
               <fa-icon [icon]='faBed'></fa-icon>
@@ -88,33 +75,20 @@
             <h3>ეძებთ რესტორანს?</h3>
             <p>ადგილები სადაც გემრიელ სამზარეულოს გასინჯავთ {{citySlug | Georgian}}-ში</p>
           </div>
-          <div class='carousel-item' [ngClass]='{"no-item": !city || !city.restaurants[0]}'>
-            <ng-container *ngIf='city && city.restaurants[0]; else noRestaurant'>
-              <img [src]='city.restaurants[0].imageUrl[0]' (error)='onError($event.target)'>
-              <div class='name'>{{city.restaurants[0].name || ''}}</div>
+          <ng-container *ngFor='let rest of restaurantData; let i = index'>
+            <div *ngIf='i<3' class='carousel-item'>
+              <img [src]='rest.imageUrl' (error)='onError($event.target)'>
+              <div class='name'>{{rest.description.split(" ")[0] || ''}}</div>
               <div class='rating'>
-                <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='city.restaurants[0].rating'></p-rating>
+                <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='rest.rating'></p-rating>
               </div>
-            </ng-container>
-          </div>
-          <div class='carousel-item' [ngClass]='{"no-item": !city || !city.restaurants[1]}'>
-            <ng-container *ngIf='city && city.restaurants[1]; else noRestaurant'>
-              <img [src]='city.restaurants[1].imageUrl[0]' (error)='onError($event.target)'>
-              <div class='name'>{{city.restaurants[1].name || ''}}</div>
-              <div class='rating'>
-                <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='city.restaurants[1].rating'></p-rating>
-              </div>
-            </ng-container>
-          </div>
-          <div class='carousel-item' [ngClass]='{"no-item": !city || !city.restaurants[2]}'>
-            <ng-container *ngIf='city && city.restaurants[2]; else noRestaurant'>
-              <img [src]='city.restaurants[2].imageUrl[0]' (error)='onError($event.target)'>
-              <div class='name'>{{city.restaurants[2].name || ''}}</div>
-              <div class='rating'>
-                <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='city.restaurants[2].rating'></p-rating>
-              </div>
-            </ng-container>
-          </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf='restaurantData.length < 3'>
+            <div *ngFor='let temp of arrayFromNumber(3-restaurantData.length)' class='carousel-item'>
+              <div *ngTemplateOutlet='noRestaurant'></div>
+            </div>
+          </ng-container>
           <ng-template #noRestaurant>
             <div class='no-carousel-item'>
               <fa-icon [icon]='faUtensils'></fa-icon>

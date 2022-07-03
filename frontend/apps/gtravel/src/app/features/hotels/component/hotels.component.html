@@ -1,4 +1,4 @@
-<dish-modal *ngIf='dishModal' [dish]='selectedDish' (close)='closeDishModal()'></dish-modal>
+<hotel-modal *ngIf='dishModal' [hotel]='selectHotel' (close)='closeDishModal()'></hotel-modal>
 <div class='dish-wrapper' *ngIf='!loading'>
   <header class="header-wrapper">
     <app-header></app-header>
@@ -8,14 +8,14 @@
     <fa-icon class='arrow arrow-left' [icon]='leftArrow' (click)='changeStep("prev")'></fa-icon>
     <div class='menu-content'>
       <div class='menu-list'>
-        <ng-container *ngFor='let dish of dishes.slice(this.carousel.currentIndex * this.carousel.length, this.carousel.currentIndex * this.carousel.length + 10)'>
-          <div class='menu-item fade-animation' (click)='selectDish(dish)'>
+        <ng-container *ngFor='let hotel of hotels.slice(this.carousel.currentIndex * this.carousel.length, this.carousel.currentIndex * this.carousel.length + 10)'>
+          <div class='menu-item fade-animation' (click)='selectDish(hotel)'>
             <div class='img'>
-              <img [src]='dish.imageUrl ?? ""' (error)='onError($event.target)'>
+              <img [src]='hotel.imageUrl ?? ""' (error)='onError($event.target)'>
             </div>
-            <div class='name'> {{dish.name}}</div>
+            <div class='name'> {{hotel.name}}</div>
             <div class='rating'>
-              <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='dish.rating'></p-rating>
+              <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='hotel.rating'></p-rating>
             </div>
           </div>
         </ng-container>

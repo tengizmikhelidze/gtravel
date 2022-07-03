@@ -1,0 +1,24 @@
+<div class='popup-wrapper'>
+  <div class='popup-content' #content>
+    <fa-icon class='close-icon' [icon]='closeIcon' (click)='closeModal()'></fa-icon>
+    <div class='dish-wrapper' *ngIf='dish'>
+      <div class='dish-image'>
+        <img [src]='dish.imageUrl ?? ""' (error)='onError($event.target)'>
+      </div>
+      <div class='dish-description'>
+        <div class='description-content'>
+          <div class='desc box'>
+            <p>სახელი:</p>
+            <p>რეიტინგი:</p>
+            <p>შემადგენლობა:</p>
+          </div>
+          <div class='ans box'>
+            <p>{{dish.name}}</p>
+            <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='dish.rating'></p-rating>
+            <p>{{dish.composition}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

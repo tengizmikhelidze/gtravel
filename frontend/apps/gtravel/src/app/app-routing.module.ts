@@ -5,8 +5,8 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: ()=>
-      import('./features/features.module').then((m)=>m.FeaturesModule)
-  }
+      import('./features/features.module').then((m)=>m.FeaturesModule),
+  },
 ];
 
 @NgModule({

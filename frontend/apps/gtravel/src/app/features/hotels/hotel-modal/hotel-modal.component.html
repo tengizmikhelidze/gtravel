@@ -1,0 +1,40 @@
+<div class='popup-wrapper'>
+  <div class='popup-content' #content>
+    <fa-icon class='close-icon' [icon]='closeIcon' (click)='closeModal()'></fa-icon>
+    <div class='dish-wrapper' *ngIf='hotel'>
+      <div class='dish-image'>
+        <img [src]='hotel.imageUrl ?? ""' (error)='onError($event.target)'>
+      </div>
+      <div class='dish-description'>
+        <div class='description-content'>
+          <p>სახელი:</p>
+          <p>{{hotel.name}}</p>
+          <p>საშუალო ფასი:</p>
+          <p>{{hotel.price}}</p>
+          <p>მისამართი:</p>
+          <p>{{hotel.address}}</p>
+          <p>რეიტინგი:</p>
+          <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='hotel.rating'></p-rating>
+          <p>მოკლე აღწერა:</p>
+          <p>{{hotel.description}}</p>
+        </div>
+<!--        <div class='description-content'>-->
+<!--          <div class='desc box'>-->
+<!--            <p>სახელი:</p>-->
+<!--            <p>მისამართი:</p>-->
+<!--            <p>საშუალო ფასი:</p>-->
+<!--            <p>რეიტინგი:</p>-->
+<!--            <p>შემადგენლობა:</p>-->
+<!--          </div>-->
+<!--          <div class='ans box'>-->
+<!--            <p>{{hotel.name}}</p>-->
+<!--            <p>{{hotel.address}}</p>-->
+<!--            <p>{{hotel.price}}</p>-->
+<!--            <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='hotel.rating'></p-rating>-->
+<!--            <p>{{hotel.description}}</p>-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
+    </div>
+  </div>
+</div>
