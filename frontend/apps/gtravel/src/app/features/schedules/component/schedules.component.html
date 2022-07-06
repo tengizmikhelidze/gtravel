@@ -1,0 +1,62 @@
+<div class='schedule-wrapper' *ngIf='!loading'>
+  <header class="header-wrapper">
+    <app-header></app-header>
+  </header>
+
+  <main>
+    <div class='main-content'>
+      <div class='left'>
+        <div class='left-content'>
+          <div class='header'>
+            <p>აირჩიეთ მიმართულებები</p>
+          </div>
+          <div class='start autocomplete'>
+            <p>დან :</p>
+            <p-autoComplete class='schedules' [placeholder]='"თბილისი"' [disabled]='true' [dropdown]='true'></p-autoComplete>
+          </div>
+          <div class='end autocomplete'>
+            <p>მდე :</p>
+            <p-autoComplete class='schedules' [suggestions]='endDestinationAutoCompleteFiltered'
+                            [completeOnFocus]='true'
+                            [field]='"endDestination"'
+                            [forceSelection]='true'
+                            [(ngModel)]='endDestination'
+                            [dropdown]='true'
+                            (onSelect)='submitDestination()'
+                            (completeMethod)='filterAutocomplete($event)'>
+            </p-autoComplete>
+          </div>
+<!--          <div class='submit'>-->
+<!--            <button (click)='submitDestination()'>დადასტურება</button>-->
+<!--          </div>-->
+        </div>
+      </div>
+      <div class='right' [ngStyle]="{'background-image': 'url(' + backgroundImg + ')'}">
+        <div class='right-content'  *ngIf='this.endDestination'>
+            <p>ტრანსპორტის ტიპი: </p>
+          <p  style='justify-self: center'><fa-icon [icon]='arrow'></fa-icon></p>
+            <p>{{this.endDestination.type | Georgian}}</p>
+            <p>სადგური: </p>
+          <p  style='justify-self: center'><fa-icon [icon]='arrow'></fa-icon></p>
+            <p>{{this.endDestination.address}}</p>
+            <p>გასვლა: </p>
+          <p  style='justify-self: center'><fa-icon [icon]='arrow'></fa-icon></p>
+            <p>{{this.endDestination.description}}</p>
+            <p>ბილეთის ფასი: </p>
+          <p  style='justify-self: center'><fa-icon [icon]='arrow'></fa-icon></p>
+            <p>{{this.endDestination.ticketPrice}} ₾</p>
+            <p>სამუშაო დღეები: </p>
+          <p  style='justify-self: center'><fa-icon [icon]='arrow'></fa-icon></p>
+            <p>{{this.endDestination.workDays}}</p>
+            <p>სამუშო საათები: </p>
+          <p  style='justify-self: center'><fa-icon [icon]='arrow'></fa-icon></p>
+            <p>{{this.endDestination.workYours}}</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <app-footer></app-footer>
+  </footer>
+</div>

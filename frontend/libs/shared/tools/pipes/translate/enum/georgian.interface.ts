@@ -12,5 +12,8 @@ export enum Georgian {
   shqartli = 'შიდა ქართლი',
   qvemoqartli = 'ქვემო ქართლი',
   itbilisi = 'თბილისი',
-  oni = 'ონი'
+  oni = 'ონი',
+  Train = 'მატარებელი',
+  Bus = 'ავტობუსი ან მიკრო-ავტობუსი',
+  Airplane = 'თვითმფრინავი',
 }

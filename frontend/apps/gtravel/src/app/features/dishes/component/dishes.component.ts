@@ -43,7 +43,6 @@ export class DishesComponent {
     this.dishesService.getAll()
       .subscribe(
         (data)=>{
-          console.log(data)
           this.dishes = data.items
           this.loading = false;
         }

@@ -15,4 +15,8 @@ export class BaseDataServiceService<T extends BaseEntity> {
   protected getOne(url: string, slug: string): Observable<T>{
     return this.httpClient.get<T>(this.environmentManager.readConfig().apiUrl + url +'/' + slug)
   }
+
+  protected travelScheduleBetween(url: string, startSlug: string, endSlug: string) {
+    return this.httpClient.get<T>(this.environmentManager.readConfig().apiUrl + url +'/start/' + startSlug + '/end' + endSlug)
+  }
 }

@@ -1,0 +1,99 @@
+::ng-deep {
+  .schedules {
+    .p-autocomplete-dd .p-autocomplete-dropdown {
+      background: none;
+      border: none;
+    }
+  }
+}
+.schedule-wrapper{
+  width: 100%;
+  position: relative;
+
+  main {
+    margin: 20px 0;
+    width: 100%;
+    height: calc(100vh - 80px - 100px);
+    background-position: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .main-content {
+      width: 75%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      .left {
+        height: 100%;
+        background: var(--primary-green);
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .left-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+          .autocomplete {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            color: #ffffff;
+          }
+          .header {
+            font-size: 25px;
+            text-align: left;
+            color: #ffffff;
+            width: max-content;
+            padding: 0 15px;
+          }
+          .submit {
+            button {
+              background: none;
+              padding: 10px 15px;
+              border: 2px solid #ffffff;
+              border-radius: 10px;
+              color: #ffffff;
+              letter-spacing: 2px;
+              &:hover {
+                transition: 0.5s;
+                background: #ffffff;
+                color: var(--primary-green)
+              }
+            }
+          }
+        }
+      }
+      .right {
+        height: 100%;
+        border-right: 1px solid var(--primary-green);
+        border-top: 1px solid var(--primary-green);
+        border-bottom: 1px solid var(--primary-green);
+        background-size: cover;
+        background-color: rgba(52, 224, 161, 0.3);
+        .right-content {
+          padding: 20px;
+          height: 100%;
+          width: 100%;
+          background-color: rgba(0,0,0, 0.5);
+          font-weight: bold;
+          color: #ffffff;
+          display: grid;
+          grid-template-columns: 150px 100px 250px;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  footer {
+    width: 100%;
+    background: #FAF1ED;
+  }
+}

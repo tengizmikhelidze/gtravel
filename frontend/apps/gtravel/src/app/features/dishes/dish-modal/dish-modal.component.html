@@ -15,7 +15,9 @@
           <div class='ans box'>
             <p>{{dish.name}}</p>
             <p-rating [stars]='5' [readonly]='true' [cancel]='false' [(ngModel)]='dish.rating'></p-rating>
-            <p>{{dish.composition}}</p>
+            <ul>
+              <li style='margin-bottom: 5px' *ngFor='let desc of dish.composition'>{{desc}}</li>
+            </ul>
           </div>
         </div>
       </div>
